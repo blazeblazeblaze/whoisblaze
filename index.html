@@ -9,6 +9,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     /* Theme the engine to match the generated clay scenes' background + palette. */
     :root, .sw-root {
@@ -16,7 +19,8 @@
       --sw-ink: #2E2A26;       /* charcoal */
       --sw-ink-soft: #7d7266;
       --sw-accent: #C8794A;    /* caramel; per-section accents override at runtime */
-      --sw-font-display: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, sans-serif;
+      --sw-font-display: "Baloo 2", ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, sans-serif;
+      --sw-font-body: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
     }
     /* Replace the default brand mark with the clay head (unlayered rule beats the
        engine's @layer sw styles). Transparent PNG floats on the cream topbar. */
