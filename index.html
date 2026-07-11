@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Blaze - a scrollable world inside my head</title>
+  <meta name="description" content="Scroll to fly through the things I love - pizza, coffee, mid-century design, old Porsches, records, LEGO, and the work I do." />
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <style>
+    /* Theme the engine to match the generated clay scenes' background + palette. */
+    :root, .sw-root {
+      --sw-bg: #F3E9D8;        /* == the scene background colour */
+      --sw-ink: #2E2A26;       /* charcoal */
+      --sw-ink-soft: #7d7266;
+      --sw-accent: #C8794A;    /* caramel; per-section accents override at runtime */
+      --sw-font-display: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, sans-serif;
+    }
+    /* Replace the default brand mark with the clay head (unlayered rule beats the
+       engine's @layer sw styles). Transparent PNG floats on the cream topbar. */
+    .sw-brand__mark {
+      width: 44px; height: 44px;
+      background: url('assets/logo-head.png') center/cover no-repeat;
+      border-radius: 50%; box-shadow: none;
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+      transform: scale(1) rotate(0deg);
+    }
+    .sw-brand:hover .sw-brand__mark { transform: scale(1.12) rotate(-8deg); }
+    @media (prefers-reduced-motion: reduce) {
+      .sw-brand__mark { transition: none; }
+      .sw-brand:hover .sw-brand__mark { transform: none; }
+    }
+    .sw-brand { gap: 12px; }
+    .sw-brand__name { font-size: 1.18rem; }
+    /* Clean dot nav - drop the connector line (was hard to center). */
+    .sw-route::before { display: none; }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Blaze', href: '#top' },
+      cta: { label: 'Say hello', href: '#hello' },
+      hint: 'scroll to fly in',
+      diveScroll: 1.3,
+      connScroll: 0.9,
+      sections: [
+        {
+          id: 'head', label: 'Intro',
+          still: 'assets/head.webp',
+          clip: 'assets/vid/head.mp4',
+          clipMobile: 'assets/vid/head-m.mp4',
+          accent: '#C8794A',
+          eyebrow: 'whoisblaze',
+          title: 'Come wander around inside my head.',
+          body: 'An engineering manager happiest with a pizza peel, an espresso tamp, or a record in hand. Scroll to take the drive.',
+        },
+        {
+          id: 'fuel', label: 'Fuel',
+          still: 'assets/fuel.webp',
+          clip: 'assets/vid/fuel.mp4',
+          clipMobile: 'assets/vid/fuel-m.mp4',
+          accent: '#B4472E',
+          linger: 0.4,
+          eyebrow: 'Things I make',
+          title: '60 seconds at 450°C, and a slow pull of espresso.',
+          body: 'Neapolitan dough and a 1:2 double - 18g in, 36g out - my two favorite excuses to obsess over the details.',
+        },
+        {
+          id: 'listening', label: 'Listening room',
+          still: 'assets/listening.webp',
+          clip: 'assets/vid/listening.mp4',
+          clipMobile: 'assets/vid/listening-m.mp4',
+          accent: '#8B5A2B',
+          linger: 0.4,
+          eyebrow: 'Where I recharge',
+          title: 'Warm light, a good chair, and a record dropping.',
+          body: 'Mid-century design and a Technics 1200 - analog things that age well.',
+        },
+        {
+          id: 'road', label: 'The open road',
+          still: 'assets/road.webp',
+          clip: 'assets/vid/road.mp4',
+          clipMobile: 'assets/vid/road-m.mp4',
+          accent: '#5E7E74',
+          eyebrow: 'Where I go',
+          title: 'An air-cooled 993 up front, a Tesla for the daily.',
+          body: 'Coast roads, ocean on one side - old soul and new tech, both welcome.',
+        },
+        {
+          id: 'study', label: 'Work & play',
+          still: 'assets/study.webp',
+          clip: 'assets/vid/study.mp4',
+          clipMobile: 'assets/vid/study-m.mp4',
+          accent: '#4F6D7A',
+          linger: 0.45,
+          eyebrow: 'Where I work & play',
+          title: 'I lead engineers by day, and build little cities by night.',
+          body: 'A desk, a shelf of LEGO modulars, and an Xbox when the day’s done.',
+        },
+        {
+          id: 'hello', label: 'Say hello',
+          still: 'assets/hello.webp',
+          clip: 'assets/vid/hello.mp4',
+          clipMobile: 'assets/vid/hello-m.mp4',
+          accent: '#C8794A',
+          eyebrow: 'Say hello',
+          title: 'Let’s talk - coffee’s on me.',
+          body: 'Reach out and I’ll get back to you.',
+          tags: [],
+          cta: {
+            primary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/blazeblazeblaze/' },
+          },
+        },
+      ],
+      connectors: [
+        'assets/vid/conn1.mp4',
+        'assets/vid/conn2.mp4',
+        'assets/vid/conn3.mp4',
+        'assets/vid/conn4.mp4',
+        'assets/vid/conn5.mp4',
+      ],
+      connectorsMobile: [
+        'assets/vid/conn1-m.mp4',
+        'assets/vid/conn2-m.mp4',
+        'assets/vid/conn3-m.mp4',
+        'assets/vid/conn4-m.mp4',
+        'assets/vid/conn5-m.mp4',
+      ],
+    });
+
+    // Make the top-right "Say hello" CTA fly to the last (contact) section
+    // by reusing the engine's own smooth jump (the last route dot).
+    (function () {
+      var cta = document.querySelector('.sw-topcta');
+      var dots = document.querySelectorAll('.sw-route__dot');
+      if (cta && dots.length) {
+        cta.addEventListener('click', function (e) {
+          e.preventDefault();
+          dots[dots.length - 1].click();
+        });
+      }
+    })();
+
+    // External links (LinkedIn, etc.) open in a new tab — the engine's CTA
+    // builder doesn't take a target option, so wire it up after mount.
+    (function () {
+      document.querySelectorAll('.sw-copy__cta a[href^="http"]').forEach(function (a) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      });
+    })();
+  </script>
+</body>
+</html>
